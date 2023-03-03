@@ -22,7 +22,10 @@ public class PdfController {
     @PostMapping("/generate-pdf")
     public ResponseEntity<byte[]> generatePdf(@RequestBody Invoice invoice) throws Exception {
         if (invoice == null || invoice.getItems() == null)
-            throw new Exception("Required request body is missing");
+        {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+           
         ByteArrayOutputStream outputStream = pdfGeneratorService.generateByteArray(invoice);
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_PDF);

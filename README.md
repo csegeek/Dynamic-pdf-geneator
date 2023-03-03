@@ -2,12 +2,12 @@
 # Dynamic PDF Generation
 
  A Spring Boot Application with REST API to generate PDF using iText.\
-Apache iText is an open-source Java library that supports the development and conversion of PDF documents. In this tutorial, we will learn how to use iText to develop Java programs that can create, convert, and manipulate PDF documents.\
+Apache iText is an open-source Java library that supports the development and conversion of PDF documents. In this tutorial, we will learn how to use iText to develop Java programs that can create, convert, and manipulate PDF documents.
 ### Request
 `POST /generate-pdf`
 
-curl --location --request POST 'http://localhost:8080/generate-pdf' \
---header 'Content-Type: application/json' 
+ `POST` 'http://localhost:8080/generate-pdf' \
+`Content-Type:` application/json' 
 
 ### Body
 ```--data-raw '{
@@ -47,5 +47,7 @@ curl --location --request POST 'http://localhost:8080/generate-pdf' \
 ```
 ### Response
 
+![Response](Response.JPG?text=Response+Pdf+Here)
 
 
+#### To save the generated pdf page in local store using postman click on `save Response -> save as file` or send a get request using `send and download` button in postman.
