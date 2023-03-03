@@ -50,4 +50,4 @@ Apache iText is an open-source Java library that supports the development and co
 ![Response](Response.JPG?text=Response+Pdf+Here)
 
 
-#### To save the generated pdf page in local store using postman click on `save Response -> save as file` or send a get request using `send and download` button in postman.
+#### To save the generated pdf page in local storage using postman click on `save Response -> save as file` or send a get request using `send and download` button in postman.
