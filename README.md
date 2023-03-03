@@ -10,7 +10,8 @@ Apache iText is an open-source Java library that supports the development and co
 `Content-Type:` application/json' 
 
 ### Body
-```--data-raw '{
+```--data-raw 
+{
 "seller": "XYZ Pvt. Ltd.",
 "sellerGstin": "29AABBCCDD121ZD", 
 "sellerAddress": "New Delhi, India", 
