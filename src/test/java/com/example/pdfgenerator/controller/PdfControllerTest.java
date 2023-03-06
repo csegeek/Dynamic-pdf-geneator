@@ -1,7 +1,6 @@
 package com.example.pdfgenerator.controller;
 
 import static org.mockito.Mockito.when;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Assertions;
@@ -23,10 +22,10 @@ import com.itextpdf.io.source.ByteArrayOutputStream;
 public class PdfControllerTest {
 
     @Mock
-    PdfGeneratorService pdfGeneratorService;
+    private PdfGeneratorService pdfGeneratorService;
 
     @InjectMocks
-    PdfController pdfController;
+    private PdfController pdfController;
 
     private Invoice invoice;
 
@@ -50,15 +49,9 @@ public class PdfControllerTest {
         invoice.setItems(items);
     }
 
-    public byte[] serializeInvoice(Invoice invoice) throws IOException {
-        ObjectMapper mapper = new ObjectMapper();
-        String json = mapper.writeValueAsString(invoice);
-        return json.getBytes("UTF-8");
-    }
-
     @Test
     void testGeneratePdf() throws Exception {
-        when(pdfGeneratorService.generateByteArray(invoice)).thenReturn(new ByteArrayOutputStream().assignBytes(serializeInvoice(invoice)));
+        when(pdfGeneratorService.generateByteArray(invoice)).thenReturn(new ByteArrayOutputStream().assignBytes(new ObjectMapper().writeValueAsBytes(invoice)));
         ResponseEntity<byte[]> responseEntity = pdfController.generatePdf(invoice);
          Assertions.assertEquals(responseEntity.getStatusCode(), HttpStatus.OK);
          Assertions.assertEquals(responseEntity.getHeaders().getContentType(), MediaType.APPLICATION_PDF);
